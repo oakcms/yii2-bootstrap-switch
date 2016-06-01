@@ -25,7 +25,11 @@ trait STrait
      * Please refer to the Bootstrap Switch 3 plugin Web page for possible options.
      * @see http://www.bootstrap-switch.org/
      */
-    public $clientOptions = [];
+    public $clientOptions = [
+        'size' => 'small',
+        'onColor' => 'success',
+        'offColor' => 'danger'
+    ];
 
     /**
      * @var array the event handlers for the underlying Bootstrap Switch 3 input JS plugin.
@@ -53,6 +57,6 @@ trait STrait
                 $js[] = "jQuery('$this->selector').on('$event', $handler);";
             }
         }
-        $view->registerJs(implode("\n", $js));
+        $this->view->registerJs(implode("\n", $js));
     }
 }

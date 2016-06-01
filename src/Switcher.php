@@ -33,7 +33,7 @@ use yii\widgets\InputWidget;
 
 class Switcher extends InputWidget
 {
-    use SwitchTrait;
+    use STrait;
 
     /**
      * @var bool whether to display the label inline or not. Defaults to true.
@@ -45,13 +45,14 @@ class Switcher extends InputWidget
      */
     public function run()
     {
+        $option = array_merge(['label' => false, 'class' => 'make-switch'], $this->options);
         if ($this->hasModel()) {
-            $input = Html::activeCheckbox($this->model, $this->attribute, $this->options);
+            $input = Html::activeCheckbox($this->model, $this->attribute, $option);
         } else {
-            $input = Html::checkbox($this->name, $this->checked, $this->options);
+            $input = Html::checkbox($this->name, $this->checked, $option);
         }
         echo $this->inlineLabel ? $input : Html::tag('div', $input);
-        $this->selector = "#{$this->options['id']}";
+        $this->selector = "#{$option['id']}";
         $this->registerClientScript();
     }
 

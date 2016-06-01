@@ -28,4 +28,19 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \oakcms\bootstrapswitch\AutoloadExample::widget(); ?>```
+<?= $form->field($model, 'field')->widget(\oakcms\bootstrapswitch\Switcher::className()) ?>
+```
+
+Or
+
+```php
+<?= \oakcms\bootstrapswitch\Switcher::widget([
+    'name' => 'Name',
+    'checked' => true,
+    'clientOptions' => [
+        'size' => 'large',
+        'onColor' => 'success',
+        'offColor' => 'danger'
+    ]
+]); ?>
+```
